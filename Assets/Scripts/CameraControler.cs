@@ -20,12 +20,6 @@ public class CameraControler : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
-    void Awake()
-    {
-        QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        Application.targetFrameRate = 60;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -34,13 +28,13 @@ public class CameraControler : MonoBehaviour
         vertikaleAbweichung -= speedY * Input.GetAxis("Mouse Y");
         
         //garantiert, dass man nicht mehr als 90° nach oben bzw. nach unten schauen kann.
-        if (vertikaleAbweichung > 90)
+        if (vertikaleAbweichung > 89)
         {
-            vertikaleAbweichung = 90;
+            vertikaleAbweichung = 89;
         }
-        else if (vertikaleAbweichung < -90)
+        else if (vertikaleAbweichung < -89)
         {
-            vertikaleAbweichung = -90;
+            vertikaleAbweichung = -89;
         }
 
         //verhindert einen Zahlenüberlauf in horizontaleAbweichung.
