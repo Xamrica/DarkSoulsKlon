@@ -46,7 +46,7 @@ public class PlayerMovementCtrl : MonoBehaviour
         Vector2 richtungsVector2 = new Vector3(-1 * Mathf.Cos(v.x * Mathf.Deg2Rad) * Mathf.Sin(v.y * Mathf.Deg2Rad), -1 * Mathf.Cos(v.x * Mathf.Deg2Rad) * Mathf.Cos(v.y * Mathf.Deg2Rad));
         if (timeSinceLastJump > timeBetweenJumps && moveInputJump != 0 && coll.isOnGround)
         {
-            playerRb.velocity = playerRb.velocity + new Vector3(0, jumpHeight * moveInputJump, 0);
+            playerRb.velocity = playerRb.velocity + Vector3.up * jumpHeight * moveInputJump;
             timeSinceLastJump = 0;  
         }
         if (coll.isOnGround)
