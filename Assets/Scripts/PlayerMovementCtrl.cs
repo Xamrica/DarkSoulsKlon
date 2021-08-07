@@ -6,9 +6,16 @@ public class PlayerMovementCtrl : MonoBehaviour
 {
     private Rigidbody playerRb;
     
+    //Bewegungsgeschwindigkeit des Spielers
     public float speed;
+
+    //die Kamera, oder anderes Objekt, nach welchem die Bewegungsrichtung ausgerichtet werden soll.
     public GameObject Kamera;
+
+    //die Höhe des Sprungs des Spielers.
     public float jumpHeight = 10.0f;
+
+    //die minimale Zeit zwischen 
     public float timeBetweenJumps = 0.1f;
     public Collider groundCollider;
 
@@ -17,6 +24,7 @@ public class PlayerMovementCtrl : MonoBehaviour
     private float moveInputVertical;
     private float moveInputJump;
     private GroundCollider coll;
+    
     // Start is called before the first frame update
     void Start()
     {
