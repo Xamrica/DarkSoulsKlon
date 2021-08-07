@@ -17,7 +17,7 @@ public class PlayerMovementCtrl : MonoBehaviour
 
     //die minimale Zeit zwischen 
     public float timeBetweenJumps = 0.1f;
-    public Collider groundCollider;
+
 
     private float timeSinceLastJump;
     private float moveInputHorizontal;
@@ -32,6 +32,9 @@ public class PlayerMovementCtrl : MonoBehaviour
         playerRb.useGravity = true;
         timeSinceLastJump = 1;
         coll = this.GetComponentInChildren<GroundCollider>();
+
+
+        Physics.CheckSphere(new Vector3(0, -1, 0), 1);
     }
 
     
@@ -62,4 +65,4 @@ public class PlayerMovementCtrl : MonoBehaviour
             playerRb.velocity = new Vector3(0, playerRb.velocity.y, 0) + Vector3.Normalize(new Vector3(richtungsVector2.x * moveInputHorizontal - richtungsVector.x * moveInputVertical, 0, richtungsVector2.y * moveInputHorizontal - richtungsVector.y * moveInputVertical)) * speed;
         }
     }
-}
+}   

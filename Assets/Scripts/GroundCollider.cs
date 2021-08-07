@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GroundCollider : MonoBehaviour
 {
+    public LayerMask layer;
     public bool isOnGround = false;
+    public float checkRadius = 0.5f;
     private long numberOfGrounds = 0;
 
     void Start()
@@ -15,29 +17,6 @@ public class GroundCollider : MonoBehaviour
 
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            isOnGround = true;
-            numberOfGrounds++;
-        }
-        Debug.Log("collision enter. Layer: " + other.gameObject.layer + "  i: " + numberOfGrounds);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            numberOfGrounds--;
-            if (numberOfGrounds == 0)
-            {
-                isOnGround = false;
-            }
-        }
-        Debug.Log("collision exit. Layer: " + other.gameObject.layer + "  i: " + numberOfGrounds);
+        isOnGround = Physics.CheckSphere(this.transform.position, checkRadius, layer);
     }
 }
